@@ -1,6 +1,6 @@
 class ArduinoChannel < ApplicationCable::Channel
   def subscribed
-    # stream_from "some_channel"
+    stream_from "arduino_channel"
   end
 
   def unsubscribed
