@@ -19,4 +19,8 @@ class LightsController < ApplicationController
 
   def destroy
   end
+
+  def change_color
+    ActionCable.server.broadcast 'arduino', rgb: params[:rgb]
+  end
 end
