@@ -1,0 +1,14 @@
+<div>
+  <% @groups.each do |group| %>
+    <div>
+      <div>
+        <span>Group Name: </span>
+        <span><%= group.name ? group.name : "Unnamed" %></span>
+      </div>
+      <div>
+        <span>Lights: </span>
+        <span><%= group.lights ? group.lights : "Ungrouped" %></span>
+      </div>
+    </div>
+  <% end %>
+</div>
