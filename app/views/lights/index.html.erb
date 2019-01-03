@@ -1,0 +1,14 @@
+<div>
+  <% @lights.each do |light| %>
+    <div>
+      <div>
+        <span>Light Name: </span>
+        <span><%= light.name ? light.name : "Unnamed" %></span>
+      </div>
+      <div>
+        <span>Group: </span>
+        <span><%= light.light_group ? light.light_group : "Ungrouped" %></span>
+      </div>
+    </div>
+  <% end %>
+</div>
