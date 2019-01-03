@@ -1,3 +1,39 @@
 // Place all the styles related to the groups controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.group-container {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 15px;
+}
+
+.group-container > div {
+  padding: 15px;
+  background-color: gainsboro;
+}
+
+.groups-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+@media(min-width: 768px) {
+  .group-container {
+    width: 50%;
+  }
+}
+
+@media(min-width: 992px) {
+  .group-container {
+    width: 33%;
+  }
+}
+
+@media(min-width: 1200px) {
+  .group-container {
+    width: 25%;
+  }
+}
