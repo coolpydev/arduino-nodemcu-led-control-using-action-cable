@@ -1,13 +1,26 @@
-<div>
+<div class="groups-container">
   <% @groups.each do |group| %>
-    <div>
+    <div class="group-container">
       <div>
-        <span>Group Name: </span>
-        <span><%= group.name ? group.name : "Unnamed" %></span>
-      </div>
-      <div>
-        <span>Lights: </span>
-        <span><%= group.lights ? group.lights : "Ungrouped" %></span>
+        <div>
+          <span>Group Name: </span>
+          <span><%= group.name ? group.name : "Unnamed" %></span>
+        </div>
+        <div>
+          <div>
+            <% if group.lights.present? %>
+            <h4>Lights </h4>
+              <% group.lights.each do |light| %>
+                <div>
+                  <span><%= light.name %></span>
+                </div>
+              <% end %>
+            <% else %>
+              <div>No lights.</div>
+            <% end %>
+          </div>
+        </div>
+        <%= link_to 'Change Color', group_path(group) %>
       </div>
     </div>
   <% end %>

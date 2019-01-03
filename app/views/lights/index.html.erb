@@ -9,6 +9,9 @@
         <span>Group: </span>
         <span><%= light.light_groups ? light.light_groups : "Ungrouped" %></span>
       </div>
+      <div>
+        <%= link_to 'Change Color', light_path(light) %>
+      </div>
     </div>
   <% end %>
 </div>
