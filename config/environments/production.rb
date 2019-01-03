@@ -93,4 +93,7 @@ Rails.application.configure do
 
   # Allow any connection to actioncable (temporary to allow arduinos in)
   config.action_cable.disable_request_forgery_protection = true
+  
+  # Set production url
+  config.web_socket_server_url = "wss://arduino-actioncable-led.herokuapp.com/cable"
 end
