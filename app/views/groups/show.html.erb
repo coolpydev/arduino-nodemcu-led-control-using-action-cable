@@ -1,0 +1,15 @@
+<%= form_with model: @group do |f| %>
+  <%= f.label "Pick a color!" %>
+  <%= f.color_field :hex %>
+  <%= f.fields_for :rgb do |ff| %>
+    <%= ff.hidden_field :r %>
+    <%= ff.hidden_field :g %>
+    <%= ff.hidden_field :b %>
+  <% end %>
+  <%= f.submit id: "color-submit" %>
+<% end %>
+
+
+<script>
+  
+</script>

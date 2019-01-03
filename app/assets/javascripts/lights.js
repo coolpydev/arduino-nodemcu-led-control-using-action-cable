@@ -1,13 +1,15 @@
 $(document).on('turbolinks:load', function(){
-  const hexField = document.getElementById('hex');
+  const hexField = document.getElementById('light_hex');
   const rgbField = document.getElementById('rgb');
 
-  hexField.oninput = function(event) {
-    let hex = hexField.value;
-    let rgb = hexToRgb(hex);
-    _rgb_r.value = rgb.r;
-    _rgb_g.value = rgb.g;
-    _rgb_b.value = rgb.b;
+  if (hexField) {
+    hexField.oninput = function(event) {
+      let hex = hexField.value;
+      let rgb = hexToRgb(hex);
+      light_rgb_r.value = rgb.r;
+      light_rgb_g.value = rgb.g;
+      light_rgb_b.value = rgb.b;
+    }
   }
 
   function hexToRgb(hex) {

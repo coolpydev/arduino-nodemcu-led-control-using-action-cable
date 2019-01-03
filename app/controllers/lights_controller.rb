@@ -1,4 +1,6 @@
 class LightsController < ApplicationController
+  before_action :set_light, except: [:index, :new, :create]
+
   def index
     @lights = Light.all
   end
@@ -16,12 +18,16 @@ class LightsController < ApplicationController
   end
 
   def update
+    ActionCable.server.broadcast "arduino_#{@light.fingerprint}", rgb: params[:light][:rgb]
   end
 
   def destroy
   end
 
-  def change_color
-    ActionCable.server.broadcast 'arduino', rgb: params[:rgb]
+  private 
+
+  def set_light
+    @light = Light.find(params[:id])
   end
+
 end

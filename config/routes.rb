@@ -3,5 +3,8 @@ Rails.application.routes.draw do
 
   resources :lights
   post "/lights/change_color", to: "lights#change_color", as: "change_color"
-  root to: "lights#new"
+  
+  resources :groups
+
+  root to: "groups#index"
 end
