@@ -23,8 +23,7 @@ Rails.application.configure do
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
   # Compress JavaScripts and CSS.
-  config.assets.js_compressor = :uglifier
-  # config.assets.css_compressor = :sass
+  config.assets.js_compressor = Uglifier.new(harmony: true)  # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
@@ -91,4 +90,10 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Allow any connection to actioncable (temporary to allow arduinos in)
+  config.action_cable.disable_request_forgery_protection = true
+  
+  # Set production url
+  config.web_socket_server_url = "wss://arduino-actioncable-led.herokuapp.com/cable"
 end

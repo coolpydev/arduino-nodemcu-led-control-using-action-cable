@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_12_071854) do
+ActiveRecord::Schema.define(version: 2019_01_03_033256) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 2018_12_12_071854) do
     t.bigint "light_group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "fingerprint"
+    t.text "name"
     t.index ["light_group_id"], name: "index_lights_on_light_group_id"
   end
 
