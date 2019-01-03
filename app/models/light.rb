@@ -1,3 +1,4 @@
 class Light < ApplicationRecord
-  belongs_to :light_group
+  has_many :light_groups
+  has_many :groups, through: :light_groups
 end
