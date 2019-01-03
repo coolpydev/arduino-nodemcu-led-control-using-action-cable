@@ -1,6 +1,11 @@
 class ArduinoChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "arduino"
+  end
+  
+  def identify_device(data)
+    @light = Light.find_or_create_by(fingerprint: data.dig("mac"))
+    # Control via individual light channel
+    stream_from "arduino_#{@light.fingerprint}"
   end
 
   def unsubscribed
@@ -8,6 +13,5 @@ class ArduinoChannel < ApplicationCable::Channel
   end
 
   def receive(data)
-    light = Light.find_or_create_by(fingerprint: data.dig("mac"))
   end
 end
