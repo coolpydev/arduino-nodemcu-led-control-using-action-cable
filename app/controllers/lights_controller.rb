@@ -1,5 +1,6 @@
 class LightsController < ApplicationController
   def index
+    @lights = Light.all
   end
 
   def new
