@@ -1,45 +1,51 @@
-<div class="groups-container">
-  <% @groups.each do |group| %>
-    <div class="group-container">
-      <div>
-        <div>
-          <span>Group Name: </span>
-          <span><%= group.name ? group.name : "Unnamed" %></span>
+<div class="container">
+  <div class="groups">
+    <% @groups.each do |group| %>
+      <div class="group">
+        <div class="group-name">
+          <strong><%= group.name ? group.name : "Unnamed" %></strong>
         </div>
-        <div>
-          <div>
-            <% if group.lights.present? %>
-            <h4>Lights </h4>
-              <% group.lights.each do |light| %>
-                <div>
-                  <span><%= light.name %></span>
-                </div>
-              <% end %>
-            <% else %>
-              <div>No lights.</div>
-            <% end %>
-          </div>
-        </div>
-        <%= link_to 'Change Color', group_path(group) %>
-      </div>
-    </div>
-  <% end %>
-</div>
 
-<div class="lights-container">
-  <% @lights.each do |light| %>
-    <div>
-      <div>
-        <span>Light Name: </span>
-        <span><%= light.name ? light.name : "Unnamed" %></span>
+        <div class="group-members">
+          <% if group.lights.present? %>
+          <h4>Lights </h4>
+            <ul>
+              <% group.lights.each do |light| %>
+                <li>
+                  <%= light.name ? light.name : "Unnamed"%>
+                </li>
+              <% end %>
+            </ul>
+          <% else %>
+            <div>No lights.</div>
+          <% end %>
+        </div>
+
+        <div class="group-color">
+          <div class="color-option on">ON</div>
+          <div class="color-option off">OFF</div>
+          <div class="color-option color">COLOR</div>
+          <%#= link_to 'Change Color', group_path(group) %>
+        </div>
       </div>
-      <div>
-        <span>Group: </span>
-        <span><%= light.light_groups ? light.light_groups : "Ungrouped" %></span>
+    <% end %>
+  </div>
+
+  <div class="lights">
+    <% @lights.each do |light| %>
+      <div class="light">
+        <div>
+          <span>Light Name: </span>
+          <span><%= light.name ? light.name : "Unnamed" %></span>
+        </div>
+        <div>
+          <span>Group: </span>
+          <span><%= light.light_groups ? light.light_groups : "Ungrouped" %></span>
+        </div>
+        <div>
+          <%= link_to 'Change Color', light_path(light) %>
+        </div>
       </div>
-      <div>
-        <%= link_to 'Change Color', light_path(light) %>
-      </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
