@@ -20,4 +20,39 @@ $(document).on('turbolinks:load', function(){
       b: parseInt(result[3], 16)
     } : null;
   }
+  
+  // Group Control
+  let buttons = document.getElementsByClassName('color-option');
+  Array.from(buttons).forEach(function(button){
+    button.onclick = function(e) {
+      let selection;
+      if ( Array.from(e.target.classList).includes('on')) {
+        rgb = {r: 255, g: 255, b: 255};
+        selection = "on";
+      } else if (Array.from(e.target.classList).includes('off')) {
+        rgb = {r: 0, g: 0, b: 0}
+        selecton = "off";
+      } else if (Array.from(e.target.classList).includes('color')) {
+        rgb = {r: 100, g: 50, b: 100}
+        selection = "color";
+      }
+      $.ajaxSetup({
+        headers: { 'X-CSRF-Token': $('#authenticity-token').attr('content') }
+      })
+      $.ajax({
+        method: "PUT",
+        url: `/groups/${e.target.parentElement.id}`,
+        data: {group: {rgb: rgb}},
+        dataType: "JSON",
+        success: function(data) {
+          console.log(data)
+          Array.from(e.target.parentElement.children).forEach(function(el){el.style.backgroundColor = "lightgray"})
+          e.target.style.backgroundColor = data["color"];
+        }
+      })
+
+    }
+  })
+
 });
+
