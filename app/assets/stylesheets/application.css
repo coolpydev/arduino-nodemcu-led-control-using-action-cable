@@ -13,3 +13,30 @@
  *= require_tree .
  *= require_self
  */
+
+ body {
+   font-family: "Poppins";
+   margin: 0;
+   padding: 0;
+ }
+
+ li {
+   list-style: none;
+ }
+
+ 
+@media(min-width: 768px) {
+  /* future styling */
+}
+
+@media(min-width: 992px) {
+  .container {
+    padding: 2%;
+  }
+}
+
+@media(min-width: 1200px) {
+  .container {
+    padding: 15%;
+  }
+}

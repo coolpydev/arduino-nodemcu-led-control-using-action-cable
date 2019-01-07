@@ -2,7 +2,8 @@ class GroupsController < ApplicationController
   before_action :set_group, except: [:index, :new, :create]
 
   def index
-    @groups = Group.all
+    @groups = Group.all # queries will be scoped when users were added to app
+    @lights = Light.all 
   end
 
   def show
