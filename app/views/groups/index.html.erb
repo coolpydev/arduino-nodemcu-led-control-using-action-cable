@@ -1,14 +1,15 @@
 <div class="container">
+  <div id="auth" value="hello"></div>
   <div class="groups">
     <% @groups.each do |group| %>
       <div class="group">
         <div class="group-name">
-          <strong><%= group.name ? group.name : "Unnamed" %></strong>
+          <h2><%= group.name ? group.name : "Unnamed" %></h2>
         </div>
 
         <div class="group-members">
-          <% if group.lights.present? %>
           <h4>Lights </h4>
+          <% if group.lights.present? %>
             <ul>
               <% group.lights.each do |light| %>
                 <li>
@@ -21,7 +22,7 @@
           <% end %>
         </div>
 
-        <div class="group-color">
+        <div class="group-color" id="<%= group.id %>">
           <div class="color-option on">ON</div>
           <div class="color-option off">OFF</div>
           <div class="color-option color">COLOR</div>
