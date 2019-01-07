@@ -25,3 +25,21 @@
     </div>
   <% end %>
 </div>
+
+<div class="lights-container">
+  <% @lights.each do |light| %>
+    <div>
+      <div>
+        <span>Light Name: </span>
+        <span><%= light.name ? light.name : "Unnamed" %></span>
+      </div>
+      <div>
+        <span>Group: </span>
+        <span><%= light.light_groups ? light.light_groups : "Ungrouped" %></span>
+      </div>
+      <div>
+        <%= link_to 'Change Color', light_path(light) %>
+      </div>
+    </div>
+  <% end %>
+</div>
