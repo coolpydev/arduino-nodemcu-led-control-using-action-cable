@@ -13,6 +13,10 @@ class GroupsController < ApplicationController
     @group.lights.each do |light|
       ActionCable.server.broadcast "arduino_#{light.fingerprint}", rgb: params[:group][:rgb]
     end
+    
+    respond_to do |format|
+      format.js {render :json => {color: "rgba(#{params[:group][:rgb][:r]}, #{params[:group][:rgb][:g]}, #{params[:group][:rgb][:b]}, 0.5)"}}
+    end
   end
 
   private 
