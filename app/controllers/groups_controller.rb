@@ -6,7 +6,18 @@ class GroupsController < ApplicationController
     @lights = Light.all 
   end
 
-  def update
+  def create
+    @group = Group.new(group_params)
+    if @group.save
+      message = "Group added!"
+    else
+      message = "Issue creating group, please try again."
+    end
+    redirect_to groups_path, message: message
+  end
+
+  def update 
+    # change light status
     rgb = params.dig(:group, :rgb)
     
     if @group.update_lights(params[:group][:rgb])
@@ -30,5 +41,9 @@ class GroupsController < ApplicationController
 
   def set_group
     @group = Group.find(params[:id])
+  end
+
+  def group_params
+    params.require(:group).permit(:name, :description)
   end
 end
