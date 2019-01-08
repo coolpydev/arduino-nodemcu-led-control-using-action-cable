@@ -2,7 +2,7 @@ class GroupsController < ApplicationController
   before_action :set_group, except: [:index, :new, :create]
 
   def index
-    @groups = Group.all # queries will be scoped when users were added to app
+    @groups = Group.all.order(:name) # queries will be scoped when users were added to app
     @lights = Light.all 
   end
 
@@ -19,6 +19,11 @@ class GroupsController < ApplicationController
     respond_to do |format|
       format.js {render :json => {color: "rgba(#{rgb[:r]}, #{rgb[:g]}, #{rgb[:b]}, 0.6)"}}
     end
+  end
+
+  def get_current_state
+    rgb = Group.find(params[:id]).rgb_state
+    render :json => rgb
   end
 
   private 
