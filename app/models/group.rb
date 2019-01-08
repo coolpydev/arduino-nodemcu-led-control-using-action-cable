@@ -6,4 +6,20 @@ class Group < ApplicationRecord
     group = Group.find_by(name: "All")
     group.lights << light if !group.lights.include?(light)
   end
+
+  def update_lights(rgb)
+    begin
+      self.lights.each do |light|
+        ActionCable.server.broadcast "arduino_#{light.fingerprint}", rgb: rgb
+      end
+      return true
+    rescue
+      return false
+    end
+  end
+
+  def save_color_state(rgb)
+    self.rgb_state = rgb
+  end
+
 end
