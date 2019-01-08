@@ -15,7 +15,7 @@ class GroupsController < ApplicationController
     end
     
     respond_to do |format|
-      format.js {render :json => {color: "rgba(#{params[:group][:rgb][:r]}, #{params[:group][:rgb][:g]}, #{params[:group][:rgb][:b]}, 0.5)"}}
+      format.js {render :json => {color: "rgba(#{params[:group][:rgb][:r]}, #{params[:group][:rgb][:g]}, #{params[:group][:rgb][:b]}, 0.6)"}}
     end
   end
 
