@@ -1,4 +1,5 @@
 <div class="container">
+  <h1>My Lights</h1>
   <div class="groups">
     <% @groups.each do |group| %>
       <div class="group">
@@ -28,6 +29,27 @@
         </div>
       </div>
     <% end %>
+    <div class="group new-group">
+      <div class="group-name">
+        <h2>Add Group</h2>
+      </div>
+      <%= form_with model: Group.new, local: true do |f| %>
+        <div>
+          <%= f.label :name %>
+          <%= f.text_field :name %>
+        </div>
+        <div>
+          <%= f.label :description %>
+          <%= f.text_field :description %>
+        </div>
+        <div>
+          <%#= f.fields_for :lights do |ff| %>
+            <%  %>
+          <%# end %>
+        </div>
+        <%= f.submit %>
+      <% end %>
+    </div>
   </div>
 
   <div class="lights">

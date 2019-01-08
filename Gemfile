@@ -26,6 +26,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt'
+# Use clearance for User management
+gem 'clearance'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

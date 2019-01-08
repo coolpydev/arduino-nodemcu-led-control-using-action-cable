@@ -23,6 +23,20 @@
   </head>
 
   <body>
+    <nav>
+      <% if signed_in? %>
+        <%= button_to 'Sign out', sign_out_path, method: :delete %>
+      <% else %>
+        <%= link_to 'Sign in', sign_in_path %>
+        <%= link_to 'Sign up', sign_up_path %>
+      <% end %>
+    </nav>
+
+    <div id="flash">
+      <% flash.each do |key, value| %>
+        <div class="flash <%= key %>"><%= value %></div>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>
