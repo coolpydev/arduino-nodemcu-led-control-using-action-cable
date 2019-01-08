@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :lights
   post "/lights/change_color", to: "lights#change_color", as: "change_color"
+  post "/groups/:id/get_current_state", to: "groups#get_current_state"
   
   resources :groups
 
