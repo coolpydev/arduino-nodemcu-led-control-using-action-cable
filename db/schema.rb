@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_08_063901) do
+ActiveRecord::Schema.define(version: 2019_01_08_083944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,13 @@ ActiveRecord::Schema.define(version: 2019_01_08_063901) do
     t.string "fingerprint"
     t.text "name"
     t.index ["light_group_id"], name: "index_lights_on_light_group_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "password_digest"
   end
 
 end
