@@ -30,9 +30,7 @@
 }
 
 .group-color {
-  width: 50%;
   display: flex;
-  justify-content: space-around;
   position: absolute;
   bottom: 3%;
   right: 3%;
@@ -42,6 +40,12 @@
   border: 1px solid black;
   padding: 1.5% 5%;
   border-radius: 4px;
+  margin: 0 10px;
+  width: 100px;
+}
+
+input {
+  background-color: gainsboro;
 }
 
 @media(min-width: 768px) {
