@@ -22,23 +22,24 @@ $(document).on('turbolinks:load', function(){
   }
   
   // Group Control
-  let buttons = document.getElementsByClassName('color-option');
+  let buttons = $('.on, .off');
   Array.from(buttons).forEach(function(button){
     button.onclick = function(e) {
+      let rgb;
       if ( Array.from(e.target.classList).includes('on')) {
-        rgb = {r: 255, g: 255, b: 255};
+        rgb = {"r": 255, "g": 255, "b": 255};
       } else if (Array.from(e.target.classList).includes('off')) {
-        rgb = {r: 0, g: 0, b: 0}
+        rgb = {"r": 0, "g": 0, "b": 0}
       } 
       sendRgbToServer(rgb, e.target);
     };
   });
 
-  let colorPickers = document.getElementsByClassName("color");
+  let colorPickers = $('.color');
   Array.from(colorPickers).forEach(function(colorPicker){
     colorPicker.onchange = function(e) {
       [r,g,b] = e.target.jscolor.rgb
-      rgb = {r: r, g: g, b: b}
+      let rgb = {"r": r, "g": g, "b": b}
       sendRgbToServer(rgb, e.target)
     }
   });
