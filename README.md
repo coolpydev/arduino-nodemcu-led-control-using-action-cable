@@ -1,24 +1,5 @@
-# README
+This is a web application to control multi-color lights. This home page categorizes lights into groups such as "Living Room", "Guest Bathroom", etc. Users can use the interface to control lights by either toggling them on (white light), off, or setting a custom color. 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The lights in this project are RGB LEDs attached to Arduino (NodeMCU with ESP8266) to demonstrate proof-of-concept. Future build-outs could include modifying the application to control more robust light systems such as Philipps Hue. 
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Find the corresponding Arduino firmware code [here](https://github.com/emikaijuin/arduino-nodemcu-led-control-using-action-cable-firmware). 
