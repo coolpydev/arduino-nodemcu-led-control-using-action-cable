@@ -22,10 +22,9 @@
         </div>
 
         <div class="group-color" id="<%= group.id %>">
-          <div class="color-option on">ON</div>
-          <div class="color-option off">OFF</div>
-          <div class="color-option color">COLOR</div>
-          <%#= link_to 'Change Color', group_path(group) %>
+          <button class="color-option on">ON</button>
+          <button class="color-option off">OFF</button>
+          <input class="color-option color jscolor {valueElement: 'COLOR'}" type="button" value="COLOR">
         </div>
       </div>
     <% end %>
