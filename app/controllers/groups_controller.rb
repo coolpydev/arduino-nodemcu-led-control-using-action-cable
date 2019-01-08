@@ -6,16 +6,18 @@ class GroupsController < ApplicationController
     @lights = Light.all 
   end
 
-  def show
-  end
-
   def update
-    @group.lights.each do |light|
-      ActionCable.server.broadcast "arduino_#{light.fingerprint}", rgb: params[:group][:rgb]
-    end
+    rgb = params.dig(:group, :rgb)
     
+    if @group.update_lights(params[:group][:rgb])
+      @group.save_color_state(params[:group][:rgb])
+      message = "Updated lights"
+    else
+      message = "Lights could not be updated." # update this in future to connect to light and confirm current state
+    end
+
     respond_to do |format|
-      format.js {render :json => {color: "rgba(#{params[:group][:rgb][:r]}, #{params[:group][:rgb][:g]}, #{params[:group][:rgb][:b]}, 0.6)"}}
+      format.js {render :json => {color: "rgba(#{rgb[:r]}, #{rgb[:g]}, #{rgb[:b]}, 0.6)"}}
     end
   end
 
