@@ -43,9 +43,8 @@
           <%= f.text_field :description %>
         </div>
         <div>
-          <%#= f.fields_for :lights do |ff| %>
-            <%  %>
-          <%# end %>
+          <%= f.label :ungrouped_lights %>
+          <%= f.text_field :lights %>
         </div>
         <%= f.submit %>
       <% end %>

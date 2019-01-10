@@ -4,6 +4,7 @@ class GroupsController < ApplicationController
   def index
     @groups = Group.all.order(:name) # queries will be scoped when users were added to app
     @lights = Light.all 
+    @ungrouped_lights = Light.ungrouped_by_id
   end
 
   def create

@@ -77,8 +77,7 @@ $(document).on('turbolinks:load', function(){
   Array.from(colorPickers).forEach(function(colorPicker){
     colorPicker.onchange = function(e) {
       [r,g,b] = e.target.jscolor.rgb
-      let rgb = {"r": r, "g": g, "b": b}
-      sendRgbToServer(rgb, e.target)
+      sendRgbToServer({"r": r, "g": g, "b": b}, e.target)
     }
   });
 
@@ -104,6 +103,25 @@ $(document).on('turbolinks:load', function(){
     });
     element.style.backgroundColor = color;
   };
+
+  $("#group_lights").selectize({
+    persist: false,
+    maxItems: null,
+    valueField: 'name',
+    options: [
+      {name: "Bedroom Main"}
+    ],
+    render: {
+      item: function(item, escape) {
+        return 'div' + (item.name ? '<span class="name">' + escape(item.name) + '</span>' : '') + '</div>';
+      },
+      option: function(item, escape) {
+        var label = item.name || item.email;
+        var caption = item.name ? item.email : null;
+        return 'div' + '<span class="label">' + escape(label) + '</span>' + (caption ? '<span class="caption">' + escape(caption) + '</span>' : '') + '</div>'
+      }
+    }
+  });
 
 });
 
