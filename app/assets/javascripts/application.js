@@ -14,4 +14,5 @@
 //= require activestorage
 //= require turbolinks
 //= require jscolor.js
+//= require selectize.js
 //= require_tree .
