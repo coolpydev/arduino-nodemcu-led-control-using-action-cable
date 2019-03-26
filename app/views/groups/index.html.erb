@@ -44,10 +44,10 @@
         </div>
         <div>
           <%= f.label :ungrouped_lights %>
-          <%= f.text_field :lights %>
+          <%= f.select :lights, options_for_select(@ungrouped_lights, prompt: "Add Lights", multiple: true) %>
         </div>
         <%= f.submit %>
-      <% end %>
+      <% end %>   
     </div>
   </div>
 

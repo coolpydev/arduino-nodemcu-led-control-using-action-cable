@@ -4,7 +4,7 @@ class Group < ApplicationRecord
   after_create :set_initial_rgb
 
   def self.add_light_to_all_lights_group(light)
-    group = Group.find_by(name: "All")
+    group = Group.find_or_create_by(name: "All")
     group.lights << light if !group.lights.include?(light)
   end
 
