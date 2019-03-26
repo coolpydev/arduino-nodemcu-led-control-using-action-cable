@@ -16,17 +16,22 @@
  *= require selectize.default
  */
 
- body {
-   font-family: "Poppins";
-   margin: 0;
-   padding: 0;
- }
+body {
+  font-family: "Poppins";
+  margin: 0;
+  padding: 0;
+}
 
- li {
-   list-style: none;
- }
+container {
+  max-width: 95%;
+  margin: auto;
+}
 
- /* Scroll-Bar */
+li {
+  list-style: none;
+}
+
+/* Scroll-Bar */
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
@@ -34,31 +39,33 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; 
+  background: #f1f1f1;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888; 
+  background: #888;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background: #555;
 }
- 
-@media(min-width: 768px) {
+
+@media (min-width: 768px) {
   /* future styling */
 }
 
-@media(min-width: 992px) {
+@media (min-width: 992px) {
   .container {
-    padding: 2%;
+    max-width: 90%;
+    margin: auto;
   }
 }
 
-/* @media(min-width: 1200px) {
+@media (min-width: 1200px) {
   .container {
-    padding: 15%;
+    max-width: 80%;
+    margin: auto;
   }
-} */
+}
