@@ -43,12 +43,11 @@
           <%= f.text_field :description %>
         </div>
         <div>
-          <%#= f.fields_for :lights do |ff| %>
-            <%  %>
-          <%# end %>
+          <%= f.label :ungrouped_lights %>
+          <%= f.select :lights, options_for_select(@ungrouped_lights, prompt: "Add Lights", multiple: true) %>
         </div>
         <%= f.submit %>
-      <% end %>
+      <% end %>   
     </div>
   </div>
 
