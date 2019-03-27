@@ -6,6 +6,7 @@ class GroupsController < ApplicationController
     @lights = Light.all
     @ungrouped_lights = Light.ungrouped_by_id
 
+
     return render :json => {"groups": @groups, "lights": @lights, "ungrouped-lights": @ungrouped_lights}
   end
 
