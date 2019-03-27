@@ -3,8 +3,10 @@ class GroupsController < ApplicationController
 
   def index
     @groups = Group.all.order(:name) # queries will be scoped when users were added to app
-    @lights = Light.all 
+    @lights = Light.all
     @ungrouped_lights = Light.ungrouped_by_id
+
+    return render :json => {"groups": @groups, "lights": @lights, "ungrouped-lights": @ungrouped_lights}
   end
 
   def create
@@ -17,10 +19,10 @@ class GroupsController < ApplicationController
     redirect_to groups_path, message: message
   end
 
-  def update 
+  def update
     # change light status
     rgb = params.dig(:group, :rgb)
-    
+
     if @group.update_lights(params[:group][:rgb])
       @group.save_color_state(params[:group][:rgb])
       message = "Updated lights"
@@ -38,7 +40,7 @@ class GroupsController < ApplicationController
     render :json => rgb
   end
 
-  private 
+  private
 
   def set_group
     @group = Group.find(params[:id])
