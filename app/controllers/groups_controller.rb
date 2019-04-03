@@ -2,11 +2,20 @@ class GroupsController < ApplicationController
   before_action :set_group, except: [:index, :new, :create]
 
   def index
-    @groups = Group.all.order(:name) # queries will be scoped when users were added to app
-    @lights = Light.all
-    @ungrouped_lights = Light.ungrouped_by_id
+    # queries will be scoped when users are added to app
+    groups = Group.order(:name).includes(:lights)
+    ungrouped_lights = Light.ungrouped
 
-    return render :json => {"groups": @groups, "lights": @lights, "ungrouped-lights": @ungrouped_lights}
+    return render :json => {
+      "groups": groups.as_json(include: [:lights]),
+      "ungroupedLights": ungrouped_lights.as_json(include: [:groups])
+    }
+  end
+
+  def show
+    lights = Light.includes(:light_groups).where(light_groups: { group_id: params[:id] })
+
+    return render :json => {"lights": lights}
   end
 
   def create
@@ -21,18 +30,15 @@ class GroupsController < ApplicationController
 
   def update
     # change light status
-    rgb = params.dig(:group, :rgb)
-
-    if @group.update_lights(params[:group][:rgb])
-      @group.save_color_state(params[:group][:rgb])
+    rgb = params.dig(:group, :rgb).permit!
+    if @group.update_lights(rgb)
+      @group.save_color_state(rgb)
       message = "Updated lights"
     else
       message = "Lights could not be updated." # update this in future to connect to light and confirm current state
     end
 
-    respond_to do |format|
-      format.js {render :json => {color: "rgba(#{rgb[:r]}, #{rgb[:g]}, #{rgb[:b]}, 0.6)"}}
-    end
+    return render :json => { color: "rgba(#{rgb[:r]}, #{rgb[:g]}, #{rgb[:b]}, 0.6)", rgb: rgb }
   end
 
   def get_current_state

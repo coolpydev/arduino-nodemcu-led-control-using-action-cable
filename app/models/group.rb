@@ -24,11 +24,10 @@ class Group < ApplicationRecord
     self.save
   end
 
-  private 
+  private
 
   def set_initial_rgb
-    self.rgb_state = {r: 0, g: 0, b: 0}
+    self.rgb_state = { r: 0, g: 0, b: 0 }
     self.save
   end
-
 end
