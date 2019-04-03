@@ -1,7 +1,7 @@
 class ArduinoChannel < ApplicationCable::Channel
   def subscribed
   end
-  
+
   def identify_device(data)
     @light = Light.find_or_create_by(fingerprint: data.dig("mac"))
     Group.add_light_to_all_lights_group(@light)
