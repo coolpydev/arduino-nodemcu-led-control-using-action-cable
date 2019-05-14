@@ -1,1 +1,1 @@
-web: bundle exec rails server -p 3001
+web: bundle exec puma -t 5:5 -p ${PORT:-3001}
